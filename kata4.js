@@ -25,5 +25,8 @@ function random2(){
 }
 
 
+function random3(){
+    return [..."+(xxx) xxx-xxxx"].map((x) => x === "x" ? x = parseInt(Math.random() * 10) : x).join("");
+}
 
-console.log(random2());
+console.log(random3());

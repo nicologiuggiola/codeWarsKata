@@ -12,40 +12,22 @@ function doors(studentsAndDoors) {
 
 
 function doors2(studentsAndDoors) {
-    let array = [];
-    let door = false;
-    let result = 0;
-
-    for (let i = 0; i < studentsAndDoors; i++) {
-        array.push(door);
-    }
-
+    const doorStates = new Array(studentsAndDoors).fill(false);
     for (let i = 0; i < studentsAndDoors; i++) {
         let counter = i;
         while (counter < studentsAndDoors) {
-            // if (array[counter]) {
-            //     array[counter] = false;
-            // } else if (!array[counter]) {
-            //     array[counter] = true;
-            // }
             array[counter] = !array[counter];
             counter += (i+1)
         }
-        
     }
 
-    for (let i = 0; i < array.length; i++) {
-        if (array[i]===true) {
-            result++
-        }
-    }
-
-    return result;
+    return doorStates.reduce((p, c) => c ? (p + 1) : p, 0)
 }
 
 
 function doors3(studentsAndDoors) {
     return Math.floor(Math.sqrt(studentsAndDoors));
 }
+
 
 console.log(doors2(5))
