@@ -90,3 +90,162 @@ console.log(incrementString3("montagna"));
 // function findMissing(array){
 //     return array.reduce((p,c) => c , 0)
 // }
+
+function findMissing(array) {
+    let difArray = []
+    for (let i = 0; i < array.length-1; i++) {
+        difArray.push(array[i+1] - array[i])
+        if(i > 0 && difArray[i] !== difArray[i-1]){
+            break;
+        }
+    }
+    return array[difArray.length-2] + difArray[difArray.length-1];
+}
+
+console.log("mi aspetto 7 e il risultato è: ",findMissing([1, 3, 5, 9, 11]));
+console.log("mi aspetto -7 e il risultato è: ",findMissing([-1, -3, -5, -9, -11]));
+console.log("mi aspetto 2 e il risultato è: ",findMissing([1,3,4]));
+console.log("mi aspetto 41 e il risultato è: ",findMissing([ 14, 23, 32, 50, 59 ]));
+console.log("mi aspetto -8 e il risultato è: ",findMissing([ 4, 1, -2, -5, -11, -14, -17, -20, -23, -26, -29, -32 ]));
+
+function prime(n) {
+    //let array = [...new Array(n+1).keys()]
+    let result = [];
+    for (let i = 1; i <= n; i++) {
+      let counter = 2;
+        for (let j = 2; j <= n; j++) {
+            if (i % j !== 0) {
+                counter++;
+            }
+        }
+      if(counter === n){
+        result.push(i);
+      }
+    }
+    
+    return result
+}
+
+function divisors2(n) {
+    return [...new Array(n+1).keys()].filter((x) => x === 2 || x === 3 ||x !== 1 && x % x === 0 && x % 2 !== 0 && x % 3 !== 0 && x % x-1 !==0);
+}
+
+console.time("oldFunc");
+console.log(prime(900));
+console.timeEnd("oldFunc");
+
+console.time("newFunc");
+console.log(divisors2(997));
+console.timeEnd("newFunc");
+
+function prime2(n) {
+    return [...new Array(n+1).keys()].filter(function(x){
+        let counter = 2;
+        for (let i = 2; i <= x; i++) {
+            if (x % i !== 0) {
+                counter++;
+            }
+        }
+        if (counter === x && x !== 0) {
+            return true;
+        }
+    })
+}
+
+console.time("oldFunc");
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.log(prime2(8000));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(24));
+console.log(prime2(10000));
+console.log(prime2(5000));
+console.log(prime2(9000));
+console.log(prime2(7000));
+console.log(prime2(10000));
+console.timeEnd("oldFunc");
