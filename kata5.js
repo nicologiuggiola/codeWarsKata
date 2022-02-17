@@ -153,99 +153,90 @@ function prime2(n) {
 }
 
 console.time("oldFunc");
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
-console.log(prime2(8000));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(24));
-console.log(prime2(10000));
-console.log(prime2(5000));
-console.log(prime2(9000));
-console.log(prime2(7000));
-console.log(prime2(10000));
+console.log(prime2(23));
 console.timeEnd("oldFunc");
+
+function mountainsOfHoyama(width){
+    let startingNumber = 0;
+    let actualWidth = width
+    let array = [];
+    while (actualWidth > 0) {
+        let actualNumber = startingNumber
+        for (let i = 0; i < actualWidth; i++) {
+            
+            if (i <= actualWidth/2) {
+                actualNumber++
+            } else {
+                actualNumber--;
+            }
+            array.push(actualNumber);
+        }
+        actualWidth = actualWidth -2;
+        startingNumber = startingNumber +2;
+    }
+
+    return array.reduce((p,c) => p+c)
+}
+
+function mountainsOfHoyama(width){
+    return (width + 1)*(width**2 + 2 + width)/8;
+}
+
+console.log(mountainsOfHoyama(7));
+
+function genPrime(number) {
+    const primeNumbers = [2];
+    let isPrime = true;
+    for (let i = 3; i <= number; i++) {
+        let numberToCheck = i;
+        for (const prime of primeNumbers) {
+            if (number % prime === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            primeNumbers.push(numberToCheck);
+        }
+    }
+    return primeNumbers;
+}
+
+function genPrime2(number) {
+    const range = Array.from({length: number -1}, (v, i) => i +2);
+    const primeNumbers = [2];
+    for (let i = 1; i < range.length; i++) {
+        const numberToCheck = range[i];
+        let isPrime = true;
+        for (let j = 0; j < i; j++) {
+            const controlNumber = range[j];
+            if (numberToCheck % controlNumber === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            primeNumbers.push(numberToCheck);
+        }       
+    }
+    return primeNumbers
+}
+
+function genPrime3(number) {
+    const array = Array.from({length: number -2}, (v, i) => i +3);
+    return array.reduce((p, c) => p.some(e => c % e === 0) ? p : [...p, c],[2]); 
+}
+
+function genPrime4(number) {
+    const array = Array.from({length: number -1}, (v, i) => i +2);
+    return array.filter(c => !array.some(e => (c % e === 0 && c !== e)));
+}
+
+console.log(genPrime(3));
+console.log(genPrime(5));
+console.log(genPrime(11));
+
+console.log(genPrime2(3));
+console.log(genPrime2(2000));
+console.log(genPrime3(2000));
+console.log(genPrime4(2000));
